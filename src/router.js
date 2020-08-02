@@ -2,7 +2,11 @@ const mainRoutes = [
   {
     method: 'GET',
     path: '/',
-    handler: () => 'Hello World!',
+    handler: (req) => {
+      req.log('info', 'GET /asdasd');
+
+      return 'Hello World!';
+    },
   },
 ];
 
