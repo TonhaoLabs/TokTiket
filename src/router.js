@@ -2,10 +2,10 @@ const mainRoutes = [
   {
     method: 'GET',
     path: '/',
-    handler: (request, h) => 'Hello World!',
+    handler: () => 'Hello World!',
   },
-]
+];
 
 module.exports = {
   routes: [...mainRoutes],
-}
+};

@@ -10,5 +10,4 @@ plugins:
 parserOptions:
   ecmaVersion: 11
 rules:
-  "prettier/prettier": "error",
-  semi: never
+  prettier/prettier: "error"
