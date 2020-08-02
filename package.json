@@ -1,0 +1,17 @@
+{
+  "name": "tok_tiket",
+  "version": "0.0.1",
+  "description": "An open source ticketing system.",
+  "main": "src/index.js",
+  "repository": "git@github.com:TonhaoLabs/TokTiket.git",
+  "author": "João Lucas Lucchetta <joao.lucas.lucchetta@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "dev": "node src/index.js"
+  },
+  "dependencies": {
+    "@hapi/boom": "^9.1.0",
+    "@hapi/hapi": "^19.2.0"
+  }
+}
