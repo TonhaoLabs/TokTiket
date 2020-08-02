@@ -1,15 +1,11 @@
 const mainRoutes = [
-    {
-        method: 'GET',
-        path: '/',
-        handler: (request, h) => {
-
-            return 'Hello World!';
-        }
-    }
+  {
+    method: 'GET',
+    path: '/',
+    handler: (request, h) => 'Hello World!',
+  },
 ]
 
-
 module.exports = {
-    routes: [...mainRoutes]
+  routes: [...mainRoutes],
 }
