@@ -7,3 +7,20 @@ services:
             - "5000:5000"
         env_file: .env
         entrypoint: "node -r dotenv/config src/index.js"
+    db:
+        image: mariadb:10.5-focal
+        ports: 
+            - "3306:3306"
+        environment: 
+            - MYSQL_DATABASE=toktiket
+            - MYSQL_USER=app
+            - MYSQL_PASSWORD=p4ss
+            - MYSQL_ROOT_PASSWORD=root
+            - TZ=UTC
+        volumes:
+            - mysql-data:/etc/mysql.d/conf.d
+            - ./schema.sql:/docker-entrypoint-initdb.d/schema.sql:ro
+
+volumes:
+    mysql-data:
+        driver: local
