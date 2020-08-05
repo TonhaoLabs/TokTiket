@@ -1,3 +1,5 @@
+const TicketsController = require('./interfaces/api/tickets-controller');
+
 const mainRoutes = [
   {
     method: 'GET',
@@ -10,6 +12,14 @@ const mainRoutes = [
   },
 ];
 
+const ticketRoutes = [
+  {
+    method: 'GET',
+    path: '/tickets',
+    handler: TicketsController.getAllTickets,
+  },
+];
+
 module.exports = {
-  routes: [...mainRoutes],
+  routes: [...mainRoutes, ...ticketRoutes],
 };

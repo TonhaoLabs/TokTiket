@@ -12,6 +12,9 @@ const init = async () => {
 
   await server.register({
     plugin: HapiPino,
+    options: {
+      prettyPrint: process.env.NODE_ENV !== 'production',
+    },
   });
 
   try {
