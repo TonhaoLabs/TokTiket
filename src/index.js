@@ -1,34 +1,26 @@
-const Hapi = require('@hapi/hapi');
-const HapiPino = require('hapi-pino');
-const Router = require('./router');
+const { init } = require('./server');
 
-const init = async () => {
-  const server = Hapi.server({
-    port: process.env.PORT,
-    host: process.env.HOST,
-  });
-
-  Router.routes.forEach((route) => server.route(route));
-
-  await server.register({
-    plugin: HapiPino,
-    options: {
-      prettyPrint: process.env.NODE_ENV !== 'production',
-    },
-  });
-
-  try {
-    await server.start();
-  } catch (err) {
-    console.error({ err }, 'Error Starting');
-  }
-
-  console.log('Server running on %s', server.info.uri);
-};
+const {
+  PORT = 3000,
+  HOST = 'localhost',
+  NODE_ENV = 'development',
+} = process.env;
 
 process.on('unhandledRejection', (err) => {
   console.log(err);
   process.exit(1);
 });
 
-init();
+const startServer = async () => {
+  const server = await init({ port: PORT, host: HOST, env: NODE_ENV });
+
+  try {
+    await server.start();
+  } catch (err) {
+    server.log('error', 'Error Starting');
+  }
+
+  server.log(`Server running on ${server.info.uri}`);
+};
+
+startServer();
