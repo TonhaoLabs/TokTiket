@@ -11,3 +11,5 @@ parserOptions:
   ecmaVersion: 11
 rules:
   prettier/prettier: "error"
+  no-param-reassign: "off"
+  implicit-arrow-linebreak: "off"
