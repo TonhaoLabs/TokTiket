@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+    app_test:
+        build: .
+        ports: 
+            - "3333:3333"
+        env_file: .env.test
+        entrypoint: "npx ava"
+    db_test:
+        image: mariadb:10.5-focal
+        ports: 
+            - "3306:3306"
+        environment: 
+            - MYSQL_DATABASE=toktiket
+            - MYSQL_USER=app
+            - MYSQL_PASSWORD=p4ss
+            - MYSQL_ROOT_PASSWORD=root
+            - TZ=UTC
+        volumes:
+            - mysql-data:/etc/mysql.d/conf.d
+            - ./schema.sql:/docker-entrypoint-initdb.d/schema.sql:ro
+
+volumes:
+    mysql-data:
+        driver: local
