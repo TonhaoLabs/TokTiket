@@ -16,6 +16,7 @@
     "@hapi/hapi": "^19.2.0",
     "ava": "^3.11.1",
     "camelcase-keys": "^6.2.2",
+    "cuid": "^2.1.8",
     "dotenv": "^8.2.0",
     "hapi-pino": "^8.0.1",
     "knex": "^0.21.2",
