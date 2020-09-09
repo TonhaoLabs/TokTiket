@@ -4,10 +4,13 @@ const TicketsRepository = require('../../infrastructure/repositories/tickets-rep
 const getAllTickets = async (req) => {
   let tickets;
   try {
-    tickets = await TicketsRepository.findAll();
+    tickets = await TicketsRepository.findAll(req);
+    if (!tickets.length) {
+      return Boom.notFound('No Tickets were found');
+    }
   } catch (error) {
     req.log('error', error);
-    return Boom.notFound('No Tickets were found');
+    return Boom.internal('An error ocurred while talking to the database');
   }
 
   const payload = { items: tickets };
