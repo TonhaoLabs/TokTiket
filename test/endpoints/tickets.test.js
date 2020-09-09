@@ -23,3 +23,12 @@ test('GET /tickets should return JSON, status 200 and have an items field', asyn
   t.is(response.status, 200);
   t.regex(response.type, /json/);
 });
+
+test('POST /tickets should return an error, status 400 when the payload is incorrect', async (t) => {
+  const incorrectPayload = { test: 'xiforimpulas' };
+  const response = await request(t.context.server.info.uri)
+    .post('/tickets')
+    .send(incorrectPayload);
+
+  t.is(response.status, 400);
+});
