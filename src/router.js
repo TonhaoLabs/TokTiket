@@ -18,6 +18,11 @@ const ticketRoutes = [
     path: '/tickets',
     handler: TicketsController.getAllTickets,
   },
+  {
+    method: 'POST',
+    path: '/tickets',
+    handler: TicketsController.createTicket,
+  },
 ];
 
 module.exports = {
